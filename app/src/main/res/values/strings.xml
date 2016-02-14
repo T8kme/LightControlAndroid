@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">LightControl</string>
+    <string name="action_settings">Ustawienia</string>
+    <string name="title_activity_led_control">LightControl</string>
+    <string name="none_paired">LightControl</string>
+    <string name="paired">Wybierz urządzenie do połączenia:</string>
+    <string name="infotxt">Jeśli nie ma urządzeń na liście sparuj je w ustawieniach bluetooth</string>
+
+    <string name="printer_on">Włączono Drukarkę</string>
+    <string name="mainlight_on">Włączono Światło Główne</string>
+    <string name="rightlight_on">Włączono Światło Prawe</string>
+    <string name="leftlight_on">Włączono Światło Lewe</string>
+    <string name="printer_off">Wyłączono Drukarkę</string>
+    <string name="mainlight_off">Wyłączono Światło Główne</string>
+    <string name="rightlight_off">Wyłączono Światło Prawe</string>
+    <string name="leftlight_off">Wyłączono Światło Lewe</string>
+    <string name="disconnect">Rozłącz</string>
+    <string name="printer">Drukarka</string>
+    <string name="leftLight">Swiatło lewe</string>
+    <string name="rightLight">Swiatło prawe</string>
+    <string name="mainLight">Swiatło główne</string>
+</resources>
