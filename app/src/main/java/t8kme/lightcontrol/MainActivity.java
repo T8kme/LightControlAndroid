@@ -319,7 +319,7 @@ public class MainActivity extends AppCompatActivity {
             //insert code to deal with this
             msg("ERROR!");
         }
-        finish(); //return to the first layout
+        finish();
     }
 
     //Checks that the Android device Bluetooth is available and prompts to be turned on if off
@@ -381,7 +381,6 @@ public class MainActivity extends AppCompatActivity {
                 //if you cannot write, close the application
                 Toast.makeText(getBaseContext(), "Błąd połączenia", Toast.LENGTH_LONG).show();
                 finish();
-
             }
         }
     }

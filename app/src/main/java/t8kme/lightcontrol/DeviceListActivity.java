@@ -1,6 +1,6 @@
 package t8kme.lightcontrol;
 
-import java.util.Set;
+import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
@@ -9,12 +9,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
+
+import java.util.Set;
 
 
 public class DeviceListActivity extends AppCompatActivity {
@@ -22,10 +23,9 @@ public class DeviceListActivity extends AppCompatActivity {
     private static final String TAG = "DeviceListActivity";
     private static final boolean D = true;
 
+    ProgressDialog pd;
 
     // declare button for launching website and textview for connection status
-    Button tlbutton;
-    TextView textView1;
 
     // EXTRA string to send on to mainactivity
     public static String EXTRA_DEVICE_ADDRESS = "device_address";
@@ -46,10 +46,6 @@ public class DeviceListActivity extends AppCompatActivity {
         super.onResume();
         //***************
         checkBTState();
-
-        textView1 = (TextView) findViewById(R.id.connecting);
-        textView1.setTextSize(40);
-        textView1.setText(" ");
 
         // Initialize array adapter for paired devices
         mPairedDevicesArrayAdapter = new ArrayAdapter<String>(this, R.layout.device_name);
@@ -77,11 +73,18 @@ public class DeviceListActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onPause()
+    {
+        super.onPause();
+        pd.dismiss();
+    }
+
     // Set up on-click listener for the list (nicked this - unsure)
     private OnItemClickListener mDeviceClickListener = new OnItemClickListener() {
         public void onItemClick(AdapterView<?> av, View v, int arg2, long arg3) {
-
-            textView1.setText("Łączenie...");
+            pd = ProgressDialog.show(DeviceListActivity.this, "Lączenie...",
+                    "Proszę czekać.", true);
             // Get the device MAC address, which is the last 17 chars in the View
             String info = ((TextView) v).getText().toString();
             String address = info.substring(info.length() - 17);
